@@ -7,6 +7,7 @@ export const memberRegister = async (req, res) => {
     const {
       body: { username, email, password },
     } = req;
+    
 
     // 아이디 중복처리
     const exist = await User.exists({ $or: [{ username }, { email }] });
