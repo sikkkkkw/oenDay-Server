@@ -1,5 +1,5 @@
 import User from "../models/user";
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
 
 // 회원가입
 export const memberRegister = async (req, res) => {
@@ -7,7 +7,7 @@ export const memberRegister = async (req, res) => {
     const {
       body: { username, email, password },
     } = req;
-    
+
 
     // 아이디 중복처리
     const exist = await User.exists({ $or: [{ username }, { email }] });
@@ -21,7 +21,7 @@ export const memberRegister = async (req, res) => {
     }
 
     // 패스워드 암호화
-    const hashedPassword = bcrypt.hashSync(password, 5);
+    const hashedPassword = hashSync(password, 5);
     console.log("password: ", hashedPassword);
 
     const data = User.create({
@@ -50,7 +50,7 @@ export const memberLogin = async (req, res) => {
     return res.send({ result: false, message: "해당하는 유저가 없습니다" });
   }
   // bcrypt를 사용자가 입력한 패스워드와 DB에 있는 패스워드 확인
-  const ok = bcrypt.compareSync(password, user.password);
+  const ok = compareSync(password, user.password);
   if (!ok) {
     return res.send({ result: false, message: "패스워드가 다릅니다." });
   }
