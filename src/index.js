@@ -14,7 +14,7 @@ const corsOptions = {
     "http://localhost:5172",
     "http://localhost:5173",
     "http://localhost:3000",
-    "https://dynamic-sundae-4d7f60.netlify.app",
+    "https://lustrous-rugelach-c251a7.netlify.app",
   ],
   methods: ["GET", "POST"],
   credentials: true,
