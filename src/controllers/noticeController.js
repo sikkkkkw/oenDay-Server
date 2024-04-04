@@ -4,6 +4,7 @@ export const noticeList = async (req, res) => {
   const OFFSET = 0;
   const LIMIT = 15;
   try {
+    
     const data = await Notice.find({})
       .sort({ createdAt: -1 })
       .limit(LIMIT)
