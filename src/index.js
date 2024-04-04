@@ -42,6 +42,7 @@ app.use(
   })
 );
 
+
 // 라우터
 app.get("/", (req, res) => res.send({ name: "kenJo" }));
 app.use("/notice", noticeRouter);
