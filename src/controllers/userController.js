@@ -45,14 +45,13 @@ export const memberLogin = async (req, res) => {
 
   // 아이디 중복체크
   const user = await User.findOne({ username: username });
-  // if (!user) {
-  //   return res.send({ result: false, message: "해당하는 유저가 없습니다" });
-  // }
+  if (!user) {
+    return res.send({ result: false, message: "해당하는 유저가 없습니다" });
+  }
   // bcrypt를 사용자가 입력한 패스워드와 DB에 있는 패스워드 확인
   const ok = bcrypt.compareSync(password, user.password);
   if (!ok) {
-    // return res.send({ result: false, message: "패스워드가 다릅니다." });
-    console.log("패스워드가 다릅니다.");
+    return res.send({ result: false, message: "패스워드가 다릅니다." });
   }
   // 패스워드가 맞으면 로그인\
   if (ok) {
