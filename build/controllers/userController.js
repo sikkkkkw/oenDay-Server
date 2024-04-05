@@ -89,10 +89,10 @@ var memberLogin = exports.memberLogin = /*#__PURE__*/function () {
             _context2.next = 6;
             break;
           }
-          return _context2.abrupt("return", res.send({
-            result: false,
-            message: "해당하는 유저가 없습니다"
-          }));
+          // return _context2.abrupt("return", res.send({
+          //   result: false,
+          //   message: "해당하는 유저가 없습니다"
+          // }));
         case 6:
           // bcrypt를 사용자가 입력한 패스워드와 DB에 있는 패스워드 확인
           ok = _bcrypt["default"].compareSync(password, user.password);
