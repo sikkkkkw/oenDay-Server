@@ -55,24 +55,18 @@ export const memberLogin = async (req, res) => {
   }
   // 패스워드가 맞으면 로그인\
   if (ok) {
-    // session 로그인
-    req.session.save(() => {
-      req.session.user = {
-        username: user.username,
-        email: user.email,
-      };
-      const data = req.session;
-      console.log(data);
-      res.send({ result: true, data: data });
-    });
+    // 로그인
+    res.send({result: true,token:user._id})
   }
 };
 
 // 로그인 성공
 export const loginSuccess = async (req, res) => {
-  console.log("loginSuceess", req.session);
+  console.log("loginSuceess",req.query.token);
   try {
-    if (req.session.user) {
+    const user= await User.findById(req.query.token)
+    console.log(user);
+    if (user) {
       res.send({ result: true, user: req.session.user, isLogin: true });
     } else {
       res.send({ result: true, isLogin: false });
