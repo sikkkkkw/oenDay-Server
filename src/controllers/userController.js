@@ -66,8 +66,8 @@ export const loginSuccess = async (req, res) => {
   try {
     const user= await User.findById(req.query.token)
     console.log(user);
-    if (req.query.token) {
-      res.send({ result: true, user: req.query.token, isLogin: true });
+    if (user) {
+      res.send({ result: true, user:user ,isLogin: true });
     } else {
       res.send({ result: true, isLogin: false });
     }
