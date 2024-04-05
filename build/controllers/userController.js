@@ -100,10 +100,10 @@ var memberLogin = exports.memberLogin = /*#__PURE__*/function () {
             _context2.next = 9;
             break;
           }
-          return _context2.abrupt("return", res.send({
-            result: false,
-            message: "패스워드가 다릅니다."
-          }));
+          // return _context2.abrupt("return", res.send({
+          //   result: false,
+          //   message: "패스워드가 다릅니다."
+          // }));
         case 9:
           // 패스워드가 맞으면 로그인\
           if (ok) {
