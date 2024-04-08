@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+// 왜 안될까요
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
   },
+
   profileImage: String,
   password: String,
   createdAt: Date,
