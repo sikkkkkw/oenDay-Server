@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 export const memberRegister = async (req, res) => {
   try {
     const {
-      body: { username, email, password },
+      body: { username, email,phone, password },
     } = req;
 
     // 아이디 중복처리
@@ -26,6 +26,7 @@ export const memberRegister = async (req, res) => {
     const data = User.create({
       username: username,
       email: email,
+      phone:phone,
       password: hashedPassword,
       createdAt: new Date(),
     });
@@ -66,8 +67,8 @@ export const loginSuccess = async (req, res) => {
   try {
     const user= await User.findById(req.query.token)
     console.log(user);
-    if (req.session.user) {
-      res.send({ result: true, user: req.session.user, isLogin: true });
+    if (user) {
+      res.send({ result: true, user: user, isLogin: true });
     } else {
       res.send({ result: true, isLogin: false });
     }
@@ -147,6 +148,7 @@ export const kakaoLogin = async (req, res) => {
       const userData = await User.create({
         username: nickname,
         email,
+        phone,
         profileImage: profile_image,
         createdAt: Date.now(),
       });
