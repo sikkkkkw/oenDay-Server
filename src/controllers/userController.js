@@ -1,6 +1,6 @@
 import User from "../models/user";
 import bcrypt from "bcrypt";
-
+// 테스트
 // 회원가입
 export const memberRegister = async (req, res) => {
   try {
@@ -54,10 +54,10 @@ export const memberLogin = async (req, res) => {
   if (!ok) {
     return res.send({ result: false, message: "패스워드가 다릅니다." });
   }
-  // 패스워드가 맞으면 로그인\
+  // 패스워드가 맞으면 로그인
   if (ok) {
     // 로그인
-    res.send({result: true,token:user._id})
+    res.send({result: true,token:user?._id})
   }
 };
 
