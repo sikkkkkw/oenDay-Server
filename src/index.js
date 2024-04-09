@@ -49,6 +49,9 @@ app.get("/", (req, res) => res.send({ name: "kenJo" }));
 app.use("/notice", noticeRouter);
 app.use("/apple", appleRouter);
 app.use("/users", userRouter);
+
+// app.use("/users", userRouter);
+// app.use("/users", userRouter);
 // app.use("/tweets", upload.single("file"),tweetRouter);
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));

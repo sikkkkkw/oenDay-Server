@@ -7,3 +7,4 @@ const db = mongoose.connection;
 
 db.on("error", (error) => console.log(error));
 db.once("open", () => console.log("Connected on DB"));
+

@@ -5,6 +5,7 @@ import {
   loginSuccess,
   logout,
   kakaoLogin,
+  solap
 } from "../controllers/userController";
 
 const userRouter = express.Router();
@@ -14,5 +15,6 @@ userRouter.post("/login", memberLogin);
 userRouter.get("/login-success", loginSuccess);
 userRouter.post("/logout", logout);
 userRouter.get("/socials/kakao", kakaoLogin);
+userRouter.post("/solap", solap);
 
 export default userRouter;
