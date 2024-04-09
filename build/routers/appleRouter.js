@@ -17,6 +17,7 @@ appleRouter.get("/comics", function (req, res) {
     name: "comics"
   });
 });
+
 appleRouter.get("/creators", function (req, res) {
   return res.send({
     name: "creators"
