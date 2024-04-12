@@ -14,6 +14,7 @@ app.use(express.json()); // JSON 본문 파싱
 
 // 알림톡 메시지 발송 함수
 app.post('/send-message', async (req, res) => {
+    console.log(req.body);
     const { name, className , year , month , day , people, LINK, pfid, templateId, disableSms } = req.body;
     try {
         // Solapi SDK를 사용하여 메시지 전송
@@ -24,7 +25,7 @@ app.post('/send-message', async (req, res) => {
 
         const response = await messageService.send({
             to: tel,
-            from: "계정에서 등록한 발신번호 입력", // 발신번호를 정확하게 입력해주세요.
+            from: "01033528779", // 발신번호를 정확하게 입력해주세요.
             kakaoOptions: {
                 pfId: pfid,
                 templateId: templateId,

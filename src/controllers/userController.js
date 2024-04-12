@@ -2,6 +2,11 @@ import User from "../models/user";
 import bcrypt from "bcrypt";
 const { SolapiMessageService } = require('solapi'); // Solapi SDK를 사용
 
+// 보안을 위해 pfid 와 templateId 을 숨김 
+const api_key = process.env.API_KEY; 
+const api_secret = process.env.API_SECRET;
+const messageService = new SolapiMessageService(api_key, api_secret);
+
 // 테스트
 // 회원가입
 export const memberRegister = async (req, res) => {
@@ -164,32 +169,32 @@ export const kakaoLogin = async (req, res) => {
 
 // 솔라피 
 export const solap = async (req, res) => {
-  const { name, tel, btn_url, pfid, templateId, disableSms } = req.body;
+  console.log(req.body)
+  const { name, className , year , month , day , people, tel , LINK, disableSms } = req.body;
+
   try {
-    // 보안을 위해 pfid 와 templateId 을 숨김 
-    const pfid = "KA01PF22041206411o33TFWW9Sl71Ppp"
-    const templateId = "KA01TP220425021337488b6WEd5EwL3C"
 
-    const messageService = new SolapiMessageService(api_key, api_secret);
+  const pfid = process.env.PFID
+  const templateId = process.env.TEMP
 
-    const response = await messageService.send({
-        to: tel,
-        from: "계정에서 등록한 발신번호 입력", // 발신번호를 정확하게 입력해주세요.
-        kakaoOptions: {
-            pfId: pfid,
-            templateId: templateId,
-            variables: name && btn_url ? {
-                "#{name}": name,
-                "#{class}": className,
-                "#{year}": year,
-                "#{month}": month,
-                "#{day}": day,
-                "#{people}": people,
-                "#{LINK}": LINK
-            } : {},
-            disableSms: disableSms || false, // 필요에 따라 disableSms 옵션 사용 (건들 ㄴㄴ)
-        }
-    });
+  const response = await messageService.send({
+      to: tel,
+      from: "01027997339", // 발신번호를 정확하게 입력해주세요.
+      kakaoOptions: {
+          pfId: pfid,
+          templateId: templateId,
+          variables: name && LINK ? {
+              "#{name}": name,
+              "#{class}": className,
+              "#{year}": year,
+              "#{month}": month,
+              "#{day}": day,
+              "#{people}": people,
+              "#{LINK}": LINK
+          } : {},
+          disableSms: disableSms || false, // 필요에 따라 disableSms 옵션 사용 
+      }
+  });
 
     res.json({ success: true, message: '알림톡 전송 성공', data: response }); // 요청이 완료되었을때 클라에게 뿌려지는 데이터(JSON)
   } catch (error) {
