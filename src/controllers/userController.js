@@ -170,10 +170,8 @@ export const kakaoLogin = async (req, res) => {
 // 솔라피 
 export const solap = async (req, res) => {
   console.log(req.body)
-  const { name, className , year , month , day , people, tel , LINK, disableSms } = req.body;
-
+  const { userName, name , year , month , day , people, tel , LINK, disableSms } = req.body;
   try {
-
   const pfid = process.env.PFID
   const templateId = process.env.TEMP
 
@@ -183,9 +181,9 @@ export const solap = async (req, res) => {
       kakaoOptions: {
           pfId: pfid,
           templateId: templateId,
-          variables: name && LINK ? {
-              "#{name}": name,
-              "#{class}": className,
+          variables: userName && LINK ? {
+              "#{name}": userName,
+              "#{class}": name,
               "#{year}": year,
               "#{month}": month,
               "#{day}": day,
