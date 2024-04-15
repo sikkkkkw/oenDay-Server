@@ -15,7 +15,7 @@ const corsOptions = {
     "http://localhost:5173",
     "http://localhost:3000",
     "http://localhost:3001",
-    "https://lustrous-rugelach-c251a7.netlify.app/",
+    "https://oen-iofqlqpty-jaesiks-projects.vercel.app",
   ],
   methods: ["GET", "POST"],
   credentials: true,
