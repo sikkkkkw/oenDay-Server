@@ -22,7 +22,7 @@ export const memberRegister = async (req, res) => {
     if (exist) {
       return res.send({
         result: false,
-        message: "입력하신 아이디가 이미 있습니다.",
+        message: "아이디나 이메일이 중복입니다..",
       });
     }
 
