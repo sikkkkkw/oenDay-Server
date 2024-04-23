@@ -16,25 +16,16 @@ export const memberRegister = async (req, res) => {
     } = req;
 
     // 아이디 중복처리
-    const exist = await User.exists({ $or: [{ username }] });
+    const existid = await User.exists({ $or: [{ username }] });
 
-    console.log(exist);
-    if (exist) {
+    console.log(existid);
+    if (existid) {
       return res.send({
         result: false,
         message: "아이디 중복입니다.",
       });
     }
-    // 이메일 중복처리
-    const emailerror = await User.exists({ $or: [ { email }] });
-
-    console.log(emailerror);
-    if (emailerror) {
-      return res.send({
-        result: false,
-        message: "이메일이 중복입니다.",
-      });
-    }
+    
 
     
 
