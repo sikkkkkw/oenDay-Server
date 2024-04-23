@@ -52,6 +52,7 @@ app.get("/", (req, res) => res.send({ name: "kenJo" }));
 app.use("/notice", noticeRouter);
 app.use("/apple", appleRouter);
 app.use("/users", userRouter);
+app.use('/img', express.static('img'))
 
 // app.use("/users", userRouter);
 // app.use("/users", userRouter);
