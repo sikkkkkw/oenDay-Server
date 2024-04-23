@@ -21,7 +21,7 @@ export const memberRegister = async (req, res) => {
     console.log(existid);
     if (existid) {
       return res.send({
-        result: false,
+        result: "iderror",
         message: "아이디 중복입니다.",
       });
     }
@@ -32,7 +32,7 @@ export const memberRegister = async (req, res) => {
     console.log(existemail);
     if (existemail) {
       return res.send({
-        result: false,
+        result: "emailerror",
         message: "이메일 중복입니다.",
       });
     }
