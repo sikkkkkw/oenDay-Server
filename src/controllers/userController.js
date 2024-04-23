@@ -26,6 +26,16 @@ export const memberRegister = async (req, res) => {
       });
     }
     
+    // 이메일 중복처리
+    const existemail = await User.exists({ $or: [ { email }] });
+
+    console.log(existemail);
+    if (existemail) {
+      return res.send({
+        result: false,
+        message: "이메일 중복입니다.",
+      });
+    }
 
     
 
